@@ -9,7 +9,24 @@ from telegram.ext import (
     filters,
 )
 
+# ======================
+# ENV
+# ======================
 TOKEN = os.getenv("BOT_TOKEN")
+
+# ======================
+# INTENT: TERIMA KASIH
+# ======================
+THANKS_KEYWORDS = [
+    "terima kasih", "terimakasih", "makasih", "makasi",
+    "makas", "thanks", "thank you", "trims", "mksh"
+]
+
+THANKS_RESPONSES = [
+    "Baik, terima kasih kembali Aromates 🌿😊",
+    "Sama-sama Aromates ✨ Senang bisa membantu 🌸",
+    "Dengan senang hati Aromates 🌿 Jika ada yang ingin ditanyakan lagi, silakan yaa 😊",
+]
 
 # ======================
 # INTENT: EO + KULIT
@@ -28,7 +45,7 @@ EO_KULIT_RESPONSES = [
         "Essential Oil dari Rumah Atsiri itu 100% *pure* dan sangat terkonsentrasi, "
         "jadi *tidak disarankan digunakan langsung ke kulit* yaa.\n\n"
         "Kalau ingin diaplikasikan ke kulit, "
-        "wajib dicampur (*diluted*) terlebih dahulu dengan *carrier oil* seperti "
+        "wajib dicampurkan (*diluted*) terlebih dahulu dengan *carrier oil* seperti "
         "jojoba, coconut, atau almond oil 💧✨"
     ),
     (
@@ -52,8 +69,8 @@ EO_KULIT_RESPONSES = [
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Halo Aromates 🌿\n"
-        "Atmin siap bantu ✨\n\n"
-        "Silakan ketik pertanyaan kamu seputar produk ATSIRI yaa 😊"
+        "Atmin Rumah Atsiri siap membantu 😊\n\n"
+        "Silakan ketik pertanyaan kamu seputar produk ATSIRI yaa ✨"
     )
 
 # ======================
@@ -65,6 +82,12 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = update.message.text.lower()
 
+    # ---- INTENT TERIMA KASIH (PRIORITAS) ----
+    if any(k in text for k in THANKS_KEYWORDS):
+        response = random.choice(THANKS_RESPONSES)
+        await update.message.reply_text(response)
+        return
+
     # ---- INTENT EO + KULIT ----
     if (
         any(k in text for k in EO_KULIT_KEYWORDS)
@@ -74,7 +97,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(response, parse_mode="Markdown")
         return
 
-    # ---- DEFAULT ----
+    # ---- FALLBACK ----
     await update.message.reply_text(
         "Baik Aromates 🌿\n"
         "Boleh dijelaskan sedikit lagi yaa agar Atmin bisa bantu lebih tepat 😊"
@@ -89,7 +112,7 @@ def main():
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, auto_reply))
 
-    print("Bot started...")
+    print("Bot ATSIRI AI-like started...")
     app.run_polling()
 
 if __name__ == "__main__":
