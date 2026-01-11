@@ -19,7 +19,7 @@ TOKEN = os.getenv("BOT_TOKEN")
 # ======================
 THANKS_KEYWORDS = [
     "terima kasih", "terimakasih", "makasih", "makasi",
-    "makas", "thanks", "thank you", "trims", "mksh"
+    "makas", "thanks", "thank you", "trims", "mksh", "tq", "tks", "sami sami"
 ]
 
 THANKS_RESPONSES = [
@@ -60,6 +60,41 @@ EO_KULIT_RESPONSES = [
         "Essential Oil Rumah Atsiri bersifat *high concentration*, "
         "sehingga tidak bisa digunakan langsung ke kulit.\n\n"
         "Gunakan metode *dilution* dengan carrier oil agar lebih aman yaa ✨"
+    ),
+]
+
+# ======================
+# INTENT: EO + DIMAKSUD
+# ======================
+EO_KULIT_KEYWORDS = [
+    "essential oil", "eo",
+]
+
+DIMAKSUD_KEYWORDS = [
+    "apa yang dimaksud", "itu apa", "apa itu",
+]
+
+EO_APAITU_RESPONSES = [
+    (
+        "Halo Aromates 🌿\n\n"
+        Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen
+        kimiawi tinggi konsentrat dari berbagai bagian tumbuhan. Setiap minyak atsiri
+        memiliki sifat, manfaat terapi, dan aroma yang beragam sesuai dengan tanaman
+        aslinya.
+    ),
+    (
+        "Hai Aromates 😊\n\n"
+        Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen
+        kimiawi tinggi konsentrat dari berbagai bagian tumbuhan. Setiap minyak atsiri
+        memiliki sifat, manfaat terapi, dan aroma yang beragam sesuai dengan tanaman
+        aslinya.
+    ),
+    (
+        "Terima kasih sudah bertanya Aromates 🌸\n\n"
+        Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen
+        kimiawi tinggi konsentrat dari berbagai bagian tumbuhan. Setiap minyak atsiri
+        memiliki sifat, manfaat terapi, dan aroma yang beragam sesuai dengan tanaman
+        aslinya.
     ),
 ]
 
