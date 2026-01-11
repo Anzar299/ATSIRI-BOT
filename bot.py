@@ -66,7 +66,7 @@ EO_KULIT_RESPONSES = [
 # ======================
 # INTENT: EO + DIMAKSUD
 # ======================
-EO_KULIT_KEYWORDS = [
+EO_DIMAKSUD_KEYWORDS = [
     "essential oil", "eo",
 ]
 
@@ -129,6 +129,15 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         and any(k in text for k in KULIT_KEYWORDS)
     ):
         response = random.choice(EO_KULIT_RESPONSES)
+        await update.message.reply_text(response, parse_mode="Markdown")
+        return
+
+         # ----  EO + DIMAKSUD ----
+    if (
+        any(k in text for k in EO_DIMAKSUD_KEYWORDS)
+        and any(k in text for k in DIMAKSUD_KEYWORDS)
+    ):
+        response = random.choice(EO_APAITU_RESPONSES)
         await update.message.reply_text(response, parse_mode="Markdown")
         return
 
