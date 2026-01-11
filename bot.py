@@ -73,7 +73,7 @@ DILUTION_KEYWORDS = [
 DILUTION_RESPONSES = [
     (
         "Halo Aromates 🌿\n\n"
-        "Dilution adalah proses pencampuran minyak Atsiri dengan minyak pembawa atau Carrier Oil"
+        "Dilution adalah proses pencampuran minyak Atsiri dengan minyak pembawa atau Carrier Oil\n"
         "sebelum diaplikasikan ke kulit 💧✨"
     ),
 ]
