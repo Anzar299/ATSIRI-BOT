@@ -77,26 +77,27 @@ DIMAKSUD_KEYWORDS = [
 EO_APAITU_RESPONSES = [
     (
         "Halo Aromates 🌿\n\n"
-        Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen
-        kimiawi tinggi konsentrat dari berbagai bagian tumbuhan. Setiap minyak atsiri
-        memiliki sifat, manfaat terapi, dan aroma yang beragam sesuai dengan tanaman
-        aslinya.
+        "Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen "
+        "kimiawi dengan konsentrasi tinggi dari berbagai bagian tumbuhan. "
+        "Setiap minyak atsiri memiliki sifat, manfaat terapi, dan aroma "
+        "yang beragam sesuai dengan tanaman aslinya."
     ),
     (
         "Hai Aromates 😊\n\n"
-        Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen
-        kimiawi tinggi konsentrat dari berbagai bagian tumbuhan. Setiap minyak atsiri
-        memiliki sifat, manfaat terapi, dan aroma yang beragam sesuai dengan tanaman
-        aslinya.
+        "Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen "
+        "kimiawi dengan konsentrasi tinggi dari berbagai bagian tumbuhan. "
+        "Setiap minyak atsiri memiliki sifat, manfaat terapi, dan aroma "
+        "yang beragam sesuai dengan tanaman aslinya."
     ),
     (
         "Terima kasih sudah bertanya Aromates 🌸\n\n"
-        Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen
-        kimiawi tinggi konsentrat dari berbagai bagian tumbuhan. Setiap minyak atsiri
-        memiliki sifat, manfaat terapi, dan aroma yang beragam sesuai dengan tanaman
-        aslinya.
+        "Essential oil atau Minyak atsiri adalah intisari tumbuhan, komponen "
+        "kimiawi dengan konsentrasi tinggi dari berbagai bagian tumbuhan. "
+        "Setiap minyak atsiri memiliki sifat, manfaat terapi, dan aroma "
+        "yang beragam sesuai dengan tanaman aslinya."
     ),
 ]
+
 
 # ======================
 # COMMAND /start
