@@ -64,6 +64,21 @@ EO_KULIT_RESPONSES = [
 ]
 
 # ======================
+# INTENT: DILUTION
+# ======================
+DILUTION_KEYWORDS = [
+    "DILUTION", "dilution", "diluted",
+]
+
+DILUTION_RESPONSES = [
+    (
+        "Halo Aromates 🌿\n\n"
+        "Dilution adalah proses pencampuran minyak Atsiri dengan minyak pembawa atau Carrier Oil"
+        "sebelum diaplikasikan ke kulit 💧✨"
+    ),
+]
+
+# ======================
 # INTENT: EO + DIMAKSUD
 # ======================
 EO_DIMAKSUD_KEYWORDS = [
@@ -133,7 +148,7 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(response, parse_mode="Markdown")
         return
 
-         # ----  EO + DIMAKSUD ----
+         # ---- EO + DIMAKSUD ----
     if (
         any(k in text for k in EO_DIMAKSUD_KEYWORDS)
         and any(k in text for k in DIMAKSUD_KEYWORDS)
@@ -142,6 +157,14 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(response, parse_mode="Markdown")
         return
 
+        # ---- DILUTION ----
+    if (
+        any(k in text for k in DILUTION_KEYWORDS)
+    ):
+        response = random.choice(DILUTION_RESPONSES)
+        await update.message.reply_text(response, parse_mode="Markdown")
+        return
+    
     # ---- FALLBACK ----
     await update.message.reply_text(
         "Baik Aromates 🌿\n"
