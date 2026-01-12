@@ -81,7 +81,7 @@ DILUTION_RESPONSES = [
 # INTENT: STOCK_PRODUK_AVAILABLE
 # ======================
 STOCK_PRODUK_AVAILABLE_KEYWORDS = [
-    "Ready", "Available", "Produk ini ada engga ya?", "Produk ini ready engga?", "Tersedia" , "Stok", "Stock" , "Ready",
+    "Ready", "Available", "Produk ready", "Produk ada", "Tersedia" , "Stok", "Stock" , "Ready", "Produk available"
 ]
 
 STOCK_PRODUK_AVAILABLE_RESPONSES = [
@@ -147,52 +147,55 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = update.message.text.lower()
 
-    # ---- INTENT TERIMA KASIH (PRIORITAS) ----
+    # ---- TERIMA KASIH (PRIORITAS) ----
     if any(k in text for k in THANKS_KEYWORDS):
-        response = random.choice(THANKS_RESPONSES)
-        await update.message.reply_text(response)
+        await update.message.reply_text(random.choice(THANKS_RESPONSES))
         return
 
-    # ---- INTENT EO + KULIT ----
+    # ---- EO + KULIT ----
     if (
         any(k in text for k in EO_KULIT_KEYWORDS)
         and any(k in text for k in KULIT_KEYWORDS)
     ):
-        response = random.choice(EO_KULIT_RESPONSES)
-        await update.message.reply_text(response, parse_mode="Markdown")
+        await update.message.reply_text(
+            random.choice(EO_KULIT_RESPONSES),
+            parse_mode="Markdown"
+        )
         return
 
-         # ---- EO + DIMAKSUD ----
+    # ---- EO + APA ITU ----
     if (
         any(k in text for k in EO_DIMAKSUD_KEYWORDS)
         and any(k in text for k in DIMAKSUD_KEYWORDS)
     ):
-        response = random.choice(EO_APAITU_RESPONSES)
-        await update.message.reply_text(response, parse_mode="Markdown")
+        await update.message.reply_text(
+            random.choice(EO_APAITU_RESPONSES),
+            parse_mode="Markdown"
+        )
         return
 
-        # ---- DILUTION ----
-    if (
-        any(k in text for k in DILUTION_KEYWORDS)
-    ):
-        response = random.choice(DILUTION_RESPONSES)
-        await update.message.reply_text(response, parse_mode="Markdown")
+    # ---- DILUTION ----
+    if any(k in text for k in DILUTION_KEYWORDS):
+        await update.message.reply_text(
+            random.choice(DILUTION_RESPONSES),
+            parse_mode="Markdown"
+        )
         return
 
-        # ---- STOCK_PRODUK_AVAILABLE ----
-    if (
-        any(k in text for k in STOCK_PRODUK_AVAILABLE_KEYWORDS)
-    ):
-        response = random.choice(STOCK_PRODUK_AVAILABLE_RESPONSES)
-        await update.message.reply_text(response, parse_mode="Markdown")
+    # ---- STOCK ----
+    if any(k in text for k in STOCK_PRODUK_AVAILABLE_KEYWORDS):
+        await update.message.reply_text(
+            random.choice(STOCK_PRODUK_AVAILABLE_RESPONSES),
+            parse_mode="Markdown"
+        )
         return
-        
-    
+
     # ---- FALLBACK ----
     await update.message.reply_text(
         "Baik Aromates 🌿\n"
         "Boleh dijelaskan sedikit lagi yaa agar Atmin bisa bantu lebih tepat 😊"
     )
+
 
 # ======================
 # MAIN
