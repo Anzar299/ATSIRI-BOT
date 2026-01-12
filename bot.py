@@ -81,7 +81,7 @@ DILUTION_RESPONSES = [
 # INTENT: STOCK_PRODUK_AVAILABLE
 # ======================
 STOCK_PRODUK_AVAILABLE_KEYWORDS = [
-    "Ready", "Available", "Produk ready", "Produk ada", "Tersedia" , "Stok", "Stock" , "Ready", "Produk available"
+    "ready", "available", "produk ready", "produk ada", "tersedia" , "stok", "stock" , "seady", "produk available" , "masih ada" ,
 ]
 
 STOCK_PRODUK_AVAILABLE_RESPONSES = [
@@ -182,13 +182,12 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    # ---- STOCK ----
+    # ---- STOCK_PRODUK_AVAILABLE ----
     if any(k in text for k in STOCK_PRODUK_AVAILABLE_KEYWORDS):
-        await update.message.reply_text(
-            random.choice(STOCK_PRODUK_AVAILABLE_RESPONSES),
-            parse_mode="Markdown"
-        )
+        response = random.choice(STOCK_PRODUK_AVAILABLE_RESPONSES)
+        await update.message.reply_text(response)
         return
+
 
     # ---- FALLBACK ----
     await update.message.reply_text(
