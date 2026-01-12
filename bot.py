@@ -78,6 +78,21 @@ DILUTION_RESPONSES = [
 ]
 
 # ======================
+# INTENT: STOCK_PRODUK_AVAILABLE
+# ======================
+STOCK_PRODUK_AVAILABLE_KEYWORDS = [
+    "Ready", "Available", "Produk ini ada engga ya?", "Produk ini ready engga?", "Tersedia" , "Stok", "Stock" , "Ready",
+]
+
+STOCK_PRODUK_AVAILABLE_RESPONSES = [
+    (
+        "Untuk produk tersebut ready sesuai dengan jumlah stock yang tertera pada link produk ya ☺️ \n\n"
+        "Jangan lupa atmin untuk mengirimkan link produk yang ditanyakan"
+    ),
+]
+
+
+# ======================
 # INTENT: EO + DIMAKSUD
 # ======================
 EO_DIMAKSUD_KEYWORDS = [
@@ -163,6 +178,15 @@ async def auto_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
         response = random.choice(DILUTION_RESPONSES)
         await update.message.reply_text(response, parse_mode="Markdown")
         return
+
+        # ---- STOCK_PRODUK_AVAILABLE ----
+    if (
+        any(k in text for k in STOCK_PRODUK_AVAILABLE_KEYWORDS)
+    ):
+        response = random.choice(STOCK_PRODUK_AVAILABLE_RESPONSES)
+        await update.message.reply_text(response, parse_mode="Markdown")
+        return
+        
     
     # ---- FALLBACK ----
     await update.message.reply_text(
